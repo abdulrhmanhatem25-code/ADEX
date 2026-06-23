@@ -18,8 +18,7 @@ export function registerAuthFailureHandler(handler) {
 
 // ── Axios instance — cookies are sent automatically ─────────────────────────
 const api = axios.create({
-    // If VITE_API_BASE_URL is present, we append /api. Otherwise we fallback to /api for local proxy.
-    baseURL: import.meta.env.VITE_API_BASE_URL ? `${import.meta.env.VITE_API_BASE_URL}/api` : "/api",
+    baseURL: "https://nub-adex.runasp.net/api",
     withCredentials: true, // Required: sends HTTP-Only cookies with every request
     headers: {
         "Content-Type": "application/json",
