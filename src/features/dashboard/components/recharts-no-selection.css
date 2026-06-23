@@ -1,0 +1,18 @@
+/* Recharts v3: إزالة مربع التركيز/التحديد عند النقر (accessibility layer + cursor) */
+.recharts-wrapper,
+.recharts-surface,
+.recharts-wrapper svg,
+.recharts-layer,
+.recharts-pie-sector,
+.recharts-bar-rectangle {
+    outline: none !important;
+}
+
+.recharts-wrapper *:focus,
+.recharts-wrapper *:focus-visible {
+    outline: none !important;
+}
+
+.recharts-tooltip-cursor {
+    display: none !important;
+}

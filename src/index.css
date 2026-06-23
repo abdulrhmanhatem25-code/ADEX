@@ -1,0 +1,995 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* ربط المتغيرات بأسماء كلاسات Tailwind (مثلاً bg-primary) */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  
+  /* Global Tailwind Color Overrides */
+  --color-white: var(--tw-white);
+  --color-slate-50: var(--tw-slate-50);
+  --color-slate-100: var(--tw-slate-100);
+  --color-slate-200: var(--tw-slate-200);
+  --color-slate-300: var(--tw-slate-300);
+  --color-slate-400: var(--tw-slate-400);
+  --color-slate-500: var(--tw-slate-500);
+  --color-slate-600: var(--tw-slate-600);
+  --color-slate-700: var(--tw-slate-700);
+  --color-slate-800: var(--tw-slate-800);
+  --color-slate-900: var(--tw-slate-900);
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* sidebar */
+  --color-sidebar-background: var(--sidebar-background);
+
+  /* labels */
+  --color-label-sidebar: var(--label-sidebar);
+  /* next-gen colors */
+  --color-next-gen: var(--next-gen);
+  --color-next-gen-text: var(--next-gen-text);
+  /* text colors */
+  --color-text: var(--text);
+  --color-text-1: var(--text-1);
+  --color-text-2: var(--text-2);
+  --color-text-3: var(--text-3);
+  --color-text-4: var(--text-4);
+  --color-sidebar-text: var(--sidebar-text);
+  
+  /* Safe UI Colors (For preserving light mode exactly while supporting dark mode) */
+  --color-ui-bg: var(--ui-bg);
+  --color-ui-bg-hover: var(--ui-bg-hover);
+  --color-ui-border: var(--ui-border);
+  --color-ui-text: var(--ui-text);
+  --color-ui-text-muted: var(--ui-text-muted);
+  --color-ui-text-subtle: var(--ui-text-subtle);
+  --color-ui-table-header: var(--ui-table-header);
+  
+  /* buttons */
+  --color-button-1: var(--button-1);
+  --color-button-1-hover: var(--button-1-hover);
+  --color-button-1-border: var(--button-1-border);
+  --color-button-2: var(--button-2);
+  --color-button-2-hover: var(--button-2-hover);
+  --color-button-2-border: var(--button-2-border);
+  --color-button-add: var(--button-add);
+  --color-button-add-hover: var(--button-add-hover);
+
+  --color-button-save: var(--button-save);
+  --color-button-save-hover: var(--button-save-hover);
+  /* cards */
+  --color-card-border: var(--card-border);
+  --color-card: var(--card);
+  --color-adex-schedule-card: var(--adex-schedule-card);
+  --color-adex-schedule-card1: var(--adex-schedule-card1);
+  --color-adex-schedule-border: var(--adex-schedule-border);
+  /* icon colors */
+  --color-icon-1: var(--icon-1);
+  --color-icon-2: var(--icon-2);
+  --color-icon-3: var(--icon-3);
+  --color-icon-4: var(--icon-4);
+  --color-icon-5: var(--icon-5);
+  --color-icon-6: var(--icon-6);
+  --color-icon-7: var(--icon-7);
+
+  /* new */
+  --color-schedule-card-lec: var(--schedule-card-lec);
+  --color-schedule-card-sec: var(--schedule-card-sec);
+  --color-schedule-card-lec-border: var(--schedule-card-lec-border);
+  --color-schedule-sidebar-hover: var(--schedule-sidebar-hover);
+  /* Control Bar */
+  --color-control-bar-bg: var(--control-bar-bg);
+  --color-control-bar-border: var(--control-bar-border);
+  /* searchableselect */
+  --color-searchableselect-bg: var(--searchableselect-bg);
+  --color-searchableselect-border: var(--searchableselect-border);
+  --color-searchableselect-hover: var(--searchableselect-hover);
+  --color-searchableselect-open: var(--searchableselect-open);
+  --color-searchableselect-select: var(--searchableselect-select);
+  --color-searchableselect-border-2: var(--searchableselect-border-2);
+  /* base */
+  --color-gray-1: var(--gray-1);
+  --color-gray-2: var(--gray-2);
+  --color-dot-1: var(--dot-1);
+  /* border */
+  --color-border-1: var(--border-1);
+  --color-assist-border: var(--assist-border);
+  --color-doctor-border: var(--doctor-border);
+  --color-start-time-border: var(--start-time-border);
+  --color-end-time-border: var(--end-time-border);
+  --color-select-border: var(--select-border);
+  --color-button-add-border: var(--button-add-border);
+  --color-button-save-border: var(--button-save-border);
+  --color-img-upload-border: var(--img-upload-border);
+  /* dashed border */
+  --color-dashed-bg1: var(--dashed-bg1);
+  --color-dashed-bg2: var(--dashed-bg2);
+  --color-dashed-bg3: var(--dashed-bg3);
+  --color-dashed-bg4: var(--dashed-bg4);
+  --color-dashed-bg5: var(--dashed-bg5);
+  /* active */
+  --color-active-room: var(--active-room);
+  --color-inactive-room: var(--inactive-room);
+  /* focus ring */
+  --color-focus-ring: var(--focus-ring);
+  /* bg */
+  --color-bg-cs: var(--bg-cs);
+  --color-bg-it: var(--bg-it);
+  --color-bg-share: var(--bg-share);
+  --color-bg-assist: var(--bg-assist);
+  --color-bg-doctor: var(--bg-doctor);
+  /* text */
+  --color-text-cs: var(--text-cs);
+  --color-text-it: var(--text-it);
+  --color-text-share: var(--text-share);
+  --color-text-assist: var(--text-assist);
+  --color-text-doctor: var(--text-doctor);
+  --color-text-start-time: var(--text-start-time);
+  --color-text-end-time: var(--text-end-time);
+  /* ava */
+  --color-ava: var(--ava);
+  --color-avalibility-ava: var(--avalibility-ava);
+  --color-enrol-ava: var(--enrol-ava);
+  /* dot */
+  --color-dot-course: var(--dot-course);
+  /* time */
+  --color-bg-start-time: var(--bg-start-time);
+  --color-bg-end-time: var(--bg-end-time);
+  /* select */
+  --color-select-bg: var(--select-bg);
+
+  /* ── Advisor Students Status Colors ───────────────────── */
+  --color-adv-status-done-bg: var(--adv-status-done-bg);
+  --color-adv-status-done-text: var(--adv-status-done-text);
+  --color-adv-status-done-border: var(--adv-status-done-border);
+  --color-adv-status-pending-bg: var(--adv-status-pending-bg);
+  --color-adv-status-pending-text: var(--adv-status-pending-text);
+  --color-adv-status-pending-border: var(--adv-status-pending-border);
+  --color-adv-status-approved-bg: var(--adv-status-approved-bg);
+  --color-adv-status-approved-text: var(--adv-status-approved-text);
+  --color-adv-status-approved-border: var(--adv-status-approved-border);
+  --color-adv-status-paid-bg: var(--adv-status-paid-bg);
+  --color-adv-status-paid-text: var(--adv-status-paid-text);
+  --color-adv-status-paid-border: var(--adv-status-paid-border);
+  --color-adv-status-not-bg: var(--adv-status-not-bg);
+  --color-adv-status-not-text: var(--adv-status-not-text);
+  --color-adv-status-not-border: var(--adv-status-not-border);
+  --color-adv-filter-active-bg: var(--adv-filter-active-bg);
+  --color-adv-filter-active-text: var(--adv-filter-active-text);
+  --color-adv-filter-idle-bg: var(--adv-filter-idle-bg);
+  --color-adv-filter-idle-text: var(--adv-filter-idle-text);
+  --color-adv-filter-idle-border: var(--adv-filter-idle-border);
+  /* ──────────────────────────────────────────────────────── */
+
+  /* ── Course Map Colors ───────────────────── */
+  --color-cmap-retake-bg: var(--cmap-retake-bg);
+  --color-cmap-retake-border: var(--cmap-retake-border);
+  --color-cmap-retake-text: var(--cmap-retake-text);
+  --color-cmap-core-bg: var(--cmap-core-bg);
+  --color-cmap-core-border: var(--cmap-core-border);
+  --color-cmap-core-text: var(--cmap-core-text);
+  --color-cmap-elective-bg: var(--cmap-elective-bg);
+  --color-cmap-elective-border: var(--cmap-elective-border);
+  --color-cmap-elective-text: var(--cmap-elective-text);
+  --color-cmap-locked-bg: var(--cmap-locked-bg);
+  --color-cmap-locked-border: var(--cmap-locked-border);
+  --color-cmap-locked-text: var(--cmap-locked-text);
+  --color-cmap-completed-bg: var(--cmap-completed-bg);
+  --color-cmap-completed-border: var(--cmap-completed-border);
+  --color-cmap-completed-text: var(--cmap-completed-text);
+  --color-cmap-default-bg: var(--cmap-default-bg);
+  --color-cmap-default-border: var(--cmap-default-border);
+  --color-cmap-default-text: var(--cmap-default-text);
+  --color-cmap-hover-ring: var(--cmap-hover-ring);
+  --color-cmap-active-line: var(--cmap-active-line);
+  /* ────────────────────────────────────────── */
+
+  /* ── Generation Page (sync button) ─────────────────── */
+  --color-gen-card: var(--gen-card);
+  --color-gen-card-border: var(--gen-card-border);
+  --color-gen-title: var(--gen-title);
+  --color-gen-subtitle: var(--gen-subtitle);
+  --color-gen-accent: var(--gen-accent);
+  --color-gen-accent-mid: var(--gen-accent-mid);
+  --color-gen-accent-end: var(--gen-accent-end);
+  --color-gen-icon-bg: var(--gen-icon-bg);
+  --color-gen-success: var(--gen-success);
+  --color-gen-success-bg: var(--gen-success-bg);
+  --color-gen-error: var(--gen-error);
+  --color-gen-error-bg: var(--gen-error-bg);
+  --color-gen-muted: var(--gen-muted);
+  --color-gen-muted-text: var(--gen-muted-text);
+  /* ──────────────────────────────────────────────────── */
+
+  /* ── Page shell / canvas (layout) — set on [data-adex-page] ─────────────── */
+  --color-page-shell: var(--page-shell-bg);
+  --color-page-canvas: var(--page-canvas-bg);
+
+  /* ── Staff Page ─────────────────────────────────────── */
+  --color-staff-term-btn-bg: var(--staff-term-btn-bg);
+  --color-staff-term-btn-border: var(--staff-term-btn-border);
+  --color-staff-term-btn-text: var(--staff-term-btn-text);
+  --color-staff-term-btn-hover: var(--staff-term-btn-hover);
+  --color-staff-add-btn-bg: var(--staff-add-btn-bg);
+  --color-staff-add-btn-hover: var(--staff-add-btn-hover);
+  --color-staff-add-btn-text: var(--staff-add-btn-text);
+  --color-staff-role-doc-bg: var(--staff-role-doc-bg);
+  --color-staff-role-doc-border: var(--staff-role-doc-border);
+  --color-staff-role-doc-icon: var(--staff-role-doc-icon);
+  --color-staff-role-ta-bg: var(--staff-role-ta-bg);
+  --color-staff-role-ta-border: var(--staff-role-ta-border);
+  --color-staff-role-ta-icon: var(--staff-role-ta-icon);
+  --color-staff-selection-bar-bg: var(--staff-selection-bar-bg);
+  --color-staff-selection-bar-text: var(--staff-selection-bar-text);
+  --color-staff-card-hover: var(--staff-card-hover);
+  --color-staff-breadcrumb-bg: var(--staff-breadcrumb-bg);
+  --color-staff-breadcrumb-text: var(--staff-breadcrumb-text);
+  /* ──────────────────────────────────────────────────── */
+}
+
+/* 🌞 الوضع الفاتح (Light Mode) */
+:root {
+  --dropdown-list: oklch(38.534% 0.14297 27.227);
+  /* Slightly tighter corners (rem-based UI scales with html font-size) */
+  --radius: 0.5rem;
+  --sidebar-width: 16rem;
+  --sidebar-width-mobile: 18rem;
+
+  /* Global Tailwind Light Defaults (Preserves existing light theme exactly) */
+  --tw-white: #ffffff;
+  --tw-slate-50: #f8fafc;
+  --tw-slate-100: #f1f5f9;
+  --tw-slate-200: #e2e8f0;
+  --tw-slate-300: #cbd5e1;
+  --tw-slate-400: #94a3b8;
+  --tw-slate-500: #64748b;
+  --tw-slate-600: #475569;
+  --tw-slate-700: #334155;
+  --tw-slate-800: #1e293b;
+  --tw-slate-900: #0f172a;
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar-foreground: oklch(32.198% 0.02657 18.558);
+  /* toggle  */
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+
+  /*-----------------------------------------------------------*/
+
+  --sidebar: oklch(48.816% 0.25831 289.998);
+  /* mobile sidebar */
+  --light-color: oklch(100% 0.00011 271.152);
+  --description-color: oklch(0 0 0 / 55%);
+  --description-hover-color: oklch(0.4568 0 0 / 51%);
+
+
+  /*sidebar*/
+  --sidebar-text: oklch(0 0 0);
+  --sidebar-background: oklch(0.8684 0.0275 255.1);
+  /* labels */
+  --label-sidebar: oklch(0.7394 0.0541 249.44);
+  /* next-gen colors */
+  --next-gen: oklch(0 0 0 / 55%);
+  --next-gen-text: oklch(100% 0.00011 271.152);
+  /* text colors */
+  --text: oklch(0 0 0);
+  --text-1: oklch(100% 0.00011 271.152);
+  --text-2: oklch(0.7394 0.0541 249.44);
+  --text-3: oklch(100% 0.00011 271.152);
+  --text-4: oklch(87.917% 0.0001 271.152 / 0.718);
+  
+  /* Safe UI Colors (Exact Tailwind defaults for Light Mode) */
+  --ui-bg: #ffffff; /* bg-white */
+  --ui-bg-hover: #f8fafc; /* bg-slate-50 */
+  --ui-border: #f1f5f9; /* border-slate-100 */
+  --ui-text: #1e293b; /* text-slate-800 */
+  --ui-text-muted: #64748b; /* text-slate-500 */
+  --ui-text-subtle: #94a3b8; /* text-slate-400 */
+  --ui-table-header: #f8fafc; /* bg-slate-50 */
+  
+  /* gray1 */
+  --text-share: oklch(0.5628 0.1399 287.43);
+  --text-it: oklch(79.997% 0.14828 343.403);
+  --text-cs: oklch(72.689% 0.06041 251.047);
+  --text-assist: oklch(79.997% 0.14828 343.403);
+  --text-doctor: oklch(72.689% 0.06041 251.047);
+  --text-start-time: oklch(0% 0 0);
+  --text-end-time: oklch(0% 0 0);
+  /* buttons */
+  --button-1: oklch(0.8018 0.0424 256.26);
+  --button-1-hover: oklch(0.854 0.0393 254.31);
+  --button-1-border: oklch(0.8665 0.0223 256.81);
+  --button-2: oklch(0% 0 0 / 0.545);
+  --button-2-hover: oklch(0.4568 0 0 / 51%);
+  --button-2-border: oklch(0.4568 0 0 / 51%);
+  --button-add: oklch(73.945% 0.05416 249.481 / 0.6);
+  --button-add-hover: oklch(73.945% 0.05416 249.481);
+  --button-save: oklch(73.945% 0.05416 249.481 / 0.6);
+  --button-save-hover: oklch(73.945% 0.05416 249.481);
+  /* cards */
+  --card: oklch(100% 0.00011 271.152);
+  --card-border: oklch(96.416% 0.00011 271.152 / 0.749);
+  --adex-schedule-card: oklch(0.8018 0.0424 256.26);
+  --adex-schedule-card1: oklch(0.8684 0.0275 255.1);
+  --adex-schedule-border: oklch(0.8665 0.0223 256.81);
+  /* icons */
+  --icon-1: oklch(0.9482 0.0276 342.26);
+  --icon-2: oklch(0.5628 0.1399 287.43);
+  --icon-3: oklch(0.5484 0.1187 271.81);
+  --icon-4: oklch(0.618 0.0723 19.33);
+  --icon-5: oklch(0.5814 0.2273 315.06);
+  --icon-6: oklch(0.5807 0.23045 259.4745);
+  --icon-7: oklch(0% 0 0);
+
+  /* schedule card */
+  --schedule-card-sec: oklch(0.618 0.0723 19.33);
+  --schedule-card-lec: oklch(0.7444 0.057 252.75);
+  --schedule-card-lec-border: oklch(39.302% 0.10439 254.473);
+  --schedule-sidebar-hover: oklch(0.937 0 0);
+  /* Control Bar */
+  --control-bar-bg: oklch(87.917% 0.0001 271.152 / 0.5);
+  --control-bar-border: oklch(87.917% 0.0001 271.152 / 0.6);
+
+  /* searchableselect */
+  --searchableselect-bg: oklch(97.1% 0.014 343.198);
+  --searchableselect-border: oklch(61.802% 0.07229 19.28 / 0.433);
+  --searchableselect-hover: oklch(0.9343 0.0336 341.03);
+  --searchableselect-open: oklch(0.9343 0.0336 341.03);
+  --searchableselect-select: oklch(0.7394 0.0541 249.44);
+  --searchableselect-border-2: oklch(0% 0 0 / 0.242);
+
+  /* select */
+  --select-bg: oklch(73.945% 0.05416 249.481 / 0.6);
+
+  /* ── Staff Page ─────────────────────────────────────── */
+  --staff-term-btn-bg: oklch(93% 0.025 255);
+  --staff-term-btn-border: oklch(83% 0.05 255);
+  --staff-term-btn-text: oklch(38% 0.12 255);
+  --staff-term-btn-hover: oklch(88% 0.04 255);
+  --staff-add-btn-bg: oklch(48.816% 0.25831 289.998);
+  --staff-add-btn-hover: oklch(44% 0.24 290);
+  --staff-add-btn-text: oklch(100% 0 0);
+  --staff-role-doc-bg: oklch(94% 0.035 255);
+  --staff-role-doc-border: oklch(82% 0.07 255);
+  --staff-role-doc-icon: oklch(52% 0.15 255);
+  --staff-role-ta-bg: oklch(95% 0.035 340);
+  --staff-role-ta-border: oklch(84% 0.07 340);
+  --staff-role-ta-icon: oklch(55% 0.14 340);
+  --staff-selection-bar-bg: oklch(48.816% 0.25831 289.998);
+  --staff-selection-bar-text: oklch(100% 0 0);
+  --staff-card-hover: oklch(97.5% 0.01 255);
+  --staff-breadcrumb-bg: oklch(94% 0.025 255);
+  --staff-breadcrumb-text: oklch(40% 0.10 255);
+  /* ──────────────────────────────────────────────────── */
+
+  /* ── Advisor Students Status Colors ───────────────────── */
+  --adv-status-done-bg: oklch(94% 0.06 145);
+  /* green-100 like */
+  --adv-status-done-text: oklch(40% 0.12 145);
+  /* green-700 like */
+  --adv-status-done-border: oklch(78% 0.10 145);
+
+  --adv-status-pending-bg: oklch(96% 0.05 80);
+  /* amber-100 like */
+  --adv-status-pending-text: oklch(45% 0.13 70);
+  /* amber-700 like */
+  --adv-status-pending-border: oklch(80% 0.12 80);
+
+  --adv-status-approved-bg: oklch(93% 0.06 255);
+  /* blue-100 like */
+  --adv-status-approved-text: oklch(40% 0.14 255);
+  /* blue-700 like */
+  --adv-status-approved-border: oklch(75% 0.11 255);
+
+  --adv-status-paid-bg: oklch(94% 0.06 170);
+  /* teal-100 like */
+  --adv-status-paid-text: oklch(38% 0.11 170);
+  /* teal-700 like */
+  --adv-status-paid-border: oklch(75% 0.09 170);
+
+  --adv-status-not-bg: oklch(96% 0.03 0);
+  /* rose-50 like */
+  --adv-status-not-text: oklch(45% 0.18 25);
+  /* rose-700 like */
+  --adv-status-not-border: oklch(80% 0.10 20);
+
+  --adv-filter-active-bg: oklch(48.816% 0.25831 289.998);
+  /* matches sidebar purple */
+  --adv-filter-active-text: oklch(100% 0 0);
+  --adv-filter-idle-bg: oklch(97% 0.005 255);
+  --adv-filter-idle-text: oklch(40% 0.04 255);
+  --adv-filter-idle-border: oklch(88% 0.02 255);
+  /* ──────────────────────────────────────────────────────── */
+
+  /* ── Course Map Colors ───────────────────── */
+  --cmap-retake-bg: #fff7ed;
+  --cmap-retake-border: #f97316;
+  --cmap-retake-text: #7c2d12;
+  --cmap-core-bg: #eff6ff;
+  --cmap-core-border: #70d3f8;
+  --cmap-core-text: #1e3a8a;
+  --cmap-elective-bg: #dcf8ce;
+  --cmap-elective-border: #22c55e;
+  --cmap-elective-text: #14532d;
+  --cmap-locked-bg: #fff1f2;
+  --cmap-locked-border: #f43f5e;
+  --cmap-locked-text: #881337;
+  --cmap-completed-bg: #f0fdfa;
+  --cmap-completed-border: #14b8a6;
+  --cmap-completed-text: #134e4a;
+  --cmap-default-bg: #faf5ff;
+  --cmap-default-border: #a855f7;
+  --cmap-default-text: #581c87;
+  --cmap-hover-ring: #bec4fb;
+  --cmap-active-line: #6366f1;
+  /* ────────────────────────────────────────── */
+
+  /* base  */
+  --gray-1: oklch(87.917% 0.0001 271.152 / 0.5);
+  --gray-2: oklch(73.802% 0.00008 271.152 / 0.708);
+  --dot-1: oklch(0.9343 0.0336 341.03);
+
+  /* border */
+  --border-1: oklch(43.495% 0.00005 271.152 / 0.5);
+  --assist-border: oklch(0.9343 0.0336 341.03);
+  --doctor-border: oklch(73.945% 0.05416 249.481 / 0.3);
+  --start-time-border: oklch(93.432% 0.03364 340.861 / 0.3);
+  --end-time-border: oklch(73.945% 0.05416 249.481 / 0.3);
+  --select-border: oklch(73.945% 0.05416 249.481 / 0.3);
+  --button-add-border: oklch(73.945% 0.05416 249.481 / 0.3);
+  --button-save-border: oklch(73.945% 0.05416 249.481 / 0.3);
+  --img-upload-border: oklch(73.945% 0.05416 249.481 / 0.742);
+  /* dashed border */
+  --dashed-bg1: oklch(97.1% 0.014 343.198);
+  --dashed-bg2: oklch(0.618 0.0723 19.33);
+  --dashed-bg3: oklch(0.9343 0.0336 341.03);
+  --dashed-bg4: oklch(0.7394 0.0541 249.44);
+  --dashed-bg5: oklch(73.802% 0.00008 271.152 / 0.708);
+
+  /* active toggle */
+  --active-room: oklch(0.9343 0.0336 341.03);
+  --inactive-room: oklch(0.7394 0.0541 249.44);
+  /* focus ring */
+  --focus-ring: oklch(0.8684 0.0275 255.1);
+  /* bg */
+  --bg-cs: oklch(0.7394 0.0541 249.44);
+  --bg-it: oklch(0.9343 0.0336 341.03);
+  --bg-share: oklch(0.5628 0.1399 287.43);
+  --bg-assist: oklch(0.9343 0.0336 341.03);
+  --bg-doctor: oklch(0.7394 0.0541 249.44);
+
+
+  /* ava */
+  --ava: oklch(0% 0 0);
+  --avalibility-ava: oklch(0.618 0.0723 19.33);
+  --enrol-ava: oklch(0.5628 0.1399 287.43);
+  /* dot */
+  --dot-course: oklch(0.618 0.0723 19.33);
+  /* time */
+  --bg-start-time: oklch(93.432% 0.03364 340.861 / 0.3);
+  --bg-end-time: oklch(73.945% 0.05416 249.481 / 0.3);
+
+  /* Aliases (used in components / comments) */
+  --text-color: var(--text);
+
+  /* Runtime layout tokens — overridden per route via [data-adex-page] */
+  --page-shell-bg: var(--light-color);
+  --page-canvas-bg: var(--light-color);
+
+  /* ═══ Per-page shell + canvas (light) — all white ═══ */
+  --pg-default-shell: #ffffff;
+  --pg-default-canvas: #ffffff;
+  --pg-home-shell: #ffffff;
+  --pg-home-canvas: #ffffff;
+  --pg-dashboard-shell: #ffffff;
+  --pg-dashboard-canvas: #ffffff;
+  --pg-schedule-shell: #ffffff;
+  --pg-schedule-canvas: #ffffff;
+  --pg-timetable-shell: #ffffff;
+  --pg-timetable-canvas: #ffffff;
+  --pg-students-shell: #ffffff;
+  --pg-students-canvas: #ffffff;
+  --pg-courses-shell: #ffffff;
+  --pg-courses-canvas: #ffffff;
+  --pg-rooms-shell: #ffffff;
+  --pg-rooms-canvas: #ffffff;
+  --pg-staff-shell: #ffffff;
+  --pg-staff-canvas: #ffffff;
+  --pg-student-registration-shell: #ffffff;
+  --pg-student-registration-canvas: #ffffff;
+  --pg-advisor-shell: #ffffff;
+  --pg-advisor-canvas: #ffffff;
+  --pg-settings-shell: #ffffff;
+  --pg-settings-canvas: #ffffff;
+  --pg-import-shell: #ffffff;
+  --pg-import-canvas: #ffffff;
+  --pg-user-management-shell: #ffffff;
+  --pg-user-management-canvas: #ffffff;
+  --pg-academic-registration-shell: #ffffff;
+  --pg-academic-registration-canvas: #ffffff;
+
+  /* ── Generation Page — light mode colors ──────────── */
+  /* Card container */
+  --gen-card: oklch(100% 0 0);                  /* white card bg */
+  --gen-card-border: oklch(92% 0.01 255);       /* soft blue-gray border */
+  /* Text */
+  --gen-title: oklch(22% 0.02 270);             /* near-black title */
+  --gen-subtitle: oklch(55% 0.02 260);          /* muted description */
+  /* Accent gradient (top bar + button) */
+  --gen-accent: oklch(52% 0.22 290);            /* vibrant purple — matches sidebar */
+  --gen-accent-mid: oklch(58% 0.20 270);        /* blue-purple mid */
+  --gen-accent-end: oklch(62% 0.18 255);        /* blue end */
+  /* Icon background */
+  --gen-icon-bg: oklch(94% 0.04 290);           /* light purple tint */
+  /* Success state */
+  --gen-success: oklch(48% 0.14 155);           /* green */
+  --gen-success-bg: oklch(95% 0.04 155);        /* light green bg */
+  /* Error state */
+  --gen-error: oklch(55% 0.20 27);              /* red-orange */
+  --gen-error-bg: oklch(95% 0.03 27);           /* light red bg */
+  /* Muted button (run again / dismiss) */
+  --gen-muted: oklch(96% 0.01 270);             /* very light gray */
+  --gen-muted-text: oklch(38% 0.04 270);        /* dark gray text */
+  /* ──────────────────────────────────────────────────── */
+}
+
+.dark {
+  /* Global Tailwind Dark Overrides (Fixes all hardcoded classes site-wide) */
+  --tw-white: oklch(0.22 0.028 268); /* Dark card background */
+  --tw-slate-50: oklch(0.26 0.03 260); /* Table headers, hovers */
+  --tw-slate-100: oklch(0.38 0.04 265); /* Soft borders */
+  --tw-slate-200: oklch(0.45 0.04 265); /* Active borders */
+  --tw-slate-300: oklch(0.55 0.03 270); /* Subtle elements */
+  --tw-slate-400: oklch(0.62 0.02 270 / 0.85); /* Muted text */
+  --tw-slate-500: oklch(0.78 0.05 285); /* Secondary text */
+  --tw-slate-600: oklch(0.85 0.03 280); /* Medium text */
+  --tw-slate-700: oklch(0.92 0.02 275); /* Bright text */
+  --tw-slate-800: oklch(0.97 0.01 270); /* Primary text */
+  --tw-slate-900: #ffffff; /* White text */
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  /* Brand-aligned dark sidebar (matches light purple hue, lower L) */
+  --sidebar: oklch(0.22 0.065 290);
+  --sidebar-foreground: oklch(0.97 0.01 285);
+  --sidebar-primary: oklch(0.62 0.18 290);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.30 0.04 285);
+  --sidebar-accent-foreground: oklch(0.97 0.01 285);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: oklch(0.62 0.16 285);
+  --bg-or: oklch(0.28 0.04 290);
+  /*--------------------------------------*/
+
+  --dropdown-list: oklch(72% 0.12 27);
+  --light-color: oklch(0.17 0.022 268);
+  --description-hover-color: oklch(0.78 0.02 270);
+  --description-color: oklch(0.72 0.02 270 / 0.75);
+
+  /* sidebar */
+  --sidebar-background: oklch(0.20 0.055 290);
+  --sidebar-text: oklch(0.98 0.005 285);
+  /* labels */
+  --label-sidebar: oklch(0.72 0.06 285);
+  /* next-gen colors */
+  --next-gen: oklch(0.55 0.12 260 / 35%);
+  --next-gen-text: oklch(0.82 0.08 285);
+  /* text colors */
+  --text: oklch(0.97 0.01 270);
+  --text-1: oklch(0.14 0.02 270);
+  --text-2: oklch(0.78 0.05 285);
+  --text-3: oklch(0.97 0.01 270);
+  --text-4: oklch(0.62 0.02 270 / 0.85);
+  
+  /* Safe UI Colors (Dark Mode Overrides) */
+  --ui-bg: oklch(0.22 0.028 268); /* --card dark */
+  --ui-bg-hover: oklch(0.28 0.025 270 / 0.75); /* --gray-1 dark */
+  --ui-border: oklch(0.38 0.04 265); /* --card-border dark */
+  --ui-text: oklch(0.97 0.01 270); /* --text dark */
+  --ui-text-muted: oklch(0.78 0.05 285); /* --text-2 dark */
+  --ui-text-subtle: oklch(0.62 0.02 270 / 0.85); /* --text-4 dark */
+  --ui-table-header: oklch(0.26 0.03 260); /* Slightly lighter than card */
+  
+  --text-share: oklch(0.78 0.10 287);
+  --text-it: oklch(0.82 0.10 343);
+  --text-cs: oklch(0.78 0.06 251);
+  --text-assist: oklch(0.82 0.10 343);
+  --text-doctor: oklch(0.78 0.06 251);
+  --text-start-time: oklch(0.92 0.02 270);
+  --text-end-time: oklch(0.92 0.02 270);
+  /* buttons */
+  --button-1: oklch(0.28 0.04 270);
+  --button-1-hover: oklch(0.34 0.045 270);
+  --button-1-border: oklch(1 0 0 / 14%);
+  --button-2: oklch(0.52 0.14 262);
+  --button-2-hover: oklch(0.58 0.15 262);
+  --button-2-border: oklch(1 0 0 / 14%);
+  --button-add: oklch(0.48 0.12 285 / 0.55);
+  --button-add-hover: oklch(0.55 0.14 285);
+  --button-save: oklch(0.48 0.12 285 / 0.55);
+  --button-save-hover: oklch(0.55 0.14 285);
+  /* cards */
+  --card: oklch(0.22 0.028 268);
+  --card-border: oklch(0.38 0.04 265);
+  --adex-schedule-card: oklch(0.24 0.045 273);
+  --adex-schedule-card1: oklch(0.22 0.028 268);
+  --adex-schedule-border: oklch(0.40 0.045 275);
+  /* Icons */
+  --icon-1: oklch(0.55 0.12 342);
+  --icon-2: oklch(0.70 0.15 287);
+  --icon-3: oklch(0.65 0.14 271);
+  --icon-4: oklch(0.75 0.10 18);
+  --icon-5: oklch(0.70 0.20 315);
+  --icon-6: oklch(0.70 0.20 260);
+  --icon-7: oklch(0.92 0.01 270);
+
+  --schedule-card-sec: oklch(0.42 0.09 19);
+  --schedule-card-lec: oklch(0.38 0.08 252);
+  --schedule-card-lec-border: oklch(0.55 0.12 254);
+  --schedule-sidebar-hover: oklch(0.30 0.03 270);
+  --control-bar-bg: oklch(0.22 0.025 270 / 0.85);
+  --control-bar-border: oklch(0.35 0.04 270 / 0.6);
+
+  --searchableselect-bg: oklch(0.24 0.03 343);
+  --searchableselect-border: oklch(0.48 0.08 19 / 0.55);
+  --searchableselect-hover: oklch(0.30 0.04 341);
+  --searchableselect-open: oklch(0.30 0.04 341);
+  --searchableselect-select: oklch(0.72 0.06 285);
+  --searchableselect-border-2: oklch(1 0 0 / 18%);
+  --select-bg: oklch(0.42 0.10 285 / 0.45);
+
+  /* ── Staff Page (dark) ───────────────────────────────── */
+  --staff-term-btn-bg: oklch(0.26 0.03 255);
+  --staff-term-btn-border: oklch(0.38 0.05 255);
+  --staff-term-btn-text: oklch(0.88 0.04 285);
+  --staff-term-btn-hover: oklch(0.32 0.04 255);
+  --staff-add-btn-bg: oklch(0.52 0.16 290);
+  --staff-add-btn-hover: oklch(0.58 0.17 290);
+  --staff-add-btn-text: oklch(0.99 0 0);
+  --staff-role-doc-bg: oklch(0.26 0.04 255);
+  --staff-role-doc-border: oklch(0.42 0.07 255);
+  --staff-role-doc-icon: oklch(0.72 0.10 285);
+  --staff-role-ta-bg: oklch(0.28 0.05 340);
+  --staff-role-ta-border: oklch(0.44 0.08 340);
+  --staff-role-ta-icon: oklch(0.78 0.12 340);
+  --staff-selection-bar-bg: oklch(0.50 0.15 290);
+  --staff-selection-bar-text: oklch(0.99 0 0);
+  --staff-card-hover: oklch(0.28 0.03 255);
+  --staff-breadcrumb-bg: oklch(0.24 0.03 255);
+  --staff-breadcrumb-text: oklch(0.86 0.05 285);
+
+  /* ── Advisor status (dark) ─────────────────────────────── */
+  --adv-status-done-bg: oklch(0.26 0.06 145);
+  --adv-status-done-text: oklch(0.88 0.08 145);
+  --adv-status-done-border: oklch(0.42 0.08 145);
+  --adv-status-pending-bg: oklch(0.30 0.05 80);
+  --adv-status-pending-text: oklch(0.90 0.10 75);
+  --adv-status-pending-border: oklch(0.45 0.10 80);
+  --adv-status-approved-bg: oklch(0.26 0.06 255);
+  --adv-status-approved-text: oklch(0.88 0.08 255);
+  --adv-status-approved-border: oklch(0.42 0.09 255);
+  --adv-status-paid-bg: oklch(0.26 0.05 170);
+  --adv-status-paid-text: oklch(0.88 0.07 170);
+  --adv-status-paid-border: oklch(0.40 0.08 170);
+  --adv-status-not-bg: oklch(0.28 0.04 25);
+  --adv-status-not-text: oklch(0.90 0.10 20);
+  --adv-status-not-border: oklch(0.45 0.10 22);
+  --adv-filter-active-bg: oklch(0.52 0.16 290);
+  --adv-filter-active-text: oklch(0.99 0 0);
+  --adv-filter-idle-bg: oklch(0.24 0.02 255);
+  --adv-filter-idle-text: oklch(0.82 0.03 255);
+  --adv-filter-idle-border: oklch(0.38 0.04 255);
+
+  --gray-1: oklch(0.28 0.025 270 / 0.75);
+  --gray-2: oklch(0.38 0.03 270 / 0.85);
+  --dot-1: oklch(0.42 0.08 341);
+
+  --border-1: oklch(1 0 0 / 16%);
+  --assist-border: oklch(0.42 0.08 341 / 0.55);
+  --doctor-border: oklch(0.48 0.10 285 / 0.35);
+  --start-time-border: oklch(0.40 0.06 341 / 0.35);
+  --end-time-border: oklch(0.48 0.10 285 / 0.35);
+  --select-border: oklch(0.48 0.10 285 / 0.35);
+  --button-add-border: oklch(0.48 0.10 285 / 0.45);
+  --button-save-border: oklch(0.48 0.10 285 / 0.45);
+  --img-upload-border: oklch(0.48 0.10 285 / 0.55);
+
+  --dashed-bg1: oklch(0.26 0.03 343);
+  --dashed-bg2: oklch(0.42 0.09 19);
+  --dashed-bg3: oklch(0.38 0.07 341);
+  --dashed-bg4: oklch(0.55 0.10 285);
+  --dashed-bg5: oklch(0.38 0.03 270 / 0.85);
+
+  --active-room: oklch(0.38 0.07 341);
+  --inactive-room: oklch(0.55 0.10 285);
+  --focus-ring: oklch(0.58 0.12 285);
+
+  --bg-cs: oklch(0.55 0.10 285);
+  --bg-it: oklch(0.38 0.07 341);
+  --bg-share: oklch(0.48 0.12 287);
+  --bg-assist: oklch(0.38 0.07 341);
+  --bg-doctor: oklch(0.55 0.10 285);
+
+  --ava: oklch(0.92 0.01 270);
+  --avalibility-ava: oklch(0.42 0.09 19);
+  --enrol-ava: oklch(0.48 0.12 287);
+  --dot-course: oklch(0.42 0.09 19);
+  --bg-start-time: oklch(0.32 0.05 341 / 0.45);
+  --bg-end-time: oklch(0.42 0.10 285 / 0.35);
+
+  --text-color: var(--text);
+  --page-shell-bg: var(--light-color);
+  --page-canvas-bg: var(--light-color);
+
+  /* ═══ Per-page shell + canvas (dark) ═══ */
+  --pg-default-shell: oklch(0.165 0.022 270);
+  --pg-default-canvas: oklch(0.15 0.024 270);
+  --pg-home-shell: oklch(0.168 0.023 268);
+  --pg-home-canvas: oklch(0.152 0.025 268);
+  --pg-dashboard-shell: oklch(0.168 0.023 265);
+  --pg-dashboard-canvas: oklch(0.152 0.025 265);
+  --pg-schedule-shell: oklch(0.168 0.025 255);
+  --pg-schedule-canvas: oklch(0.15 0.028 255);
+  --pg-timetable-shell: oklch(0.168 0.025 252);
+  --pg-timetable-canvas: oklch(0.151 0.028 252);
+  --pg-students-shell: oklch(0.168 0.023 275);
+  --pg-students-canvas: oklch(0.152 0.026 275);
+  --pg-courses-shell: oklch(0.168 0.023 260);
+  --pg-courses-canvas: oklch(0.152 0.026 260);
+  --pg-rooms-shell: oklch(0.168 0.023 245);
+  --pg-rooms-canvas: oklch(0.152 0.026 245);
+  --pg-staff-shell: oklch(0.17 0.028 288);
+  --pg-staff-canvas: oklch(0.153 0.032 288);
+  --pg-student-registration-shell: oklch(0.168 0.024 285);
+  --pg-student-registration-canvas: oklch(0.151 0.028 285);
+  --pg-advisor-shell: oklch(0.168 0.024 280);
+  --pg-advisor-canvas: oklch(0.151 0.028 280);
+  --pg-settings-shell: oklch(0.166 0.02 272);
+  --pg-settings-canvas: oklch(0.15 0.022 272);
+  --pg-import-shell: oklch(0.168 0.024 250);
+  --pg-import-canvas: oklch(0.151 0.027 250);
+  --pg-user-management-shell: oklch(0.168 0.025 285);
+  --pg-user-management-canvas: oklch(0.151 0.028 285);
+  --pg-academic-registration-shell: oklch(0.168 0.03 200);
+  --pg-academic-registration-canvas: oklch(0.152 0.034 200);
+
+  /* ── Course Map Colors (Dark Mode) ────────── */
+  --cmap-retake-bg: #431407;
+  --cmap-retake-border: #ea580c;
+  --cmap-retake-text: #ffedd5;
+  --cmap-core-bg: #172554;
+  --cmap-core-border: #2563eb;
+  --cmap-core-text: #dbeafe;
+  --cmap-elective-bg: #052e16;
+  --cmap-elective-border: #16a34a;
+  --cmap-elective-text: #dcfce7;
+  --cmap-locked-bg: #4c0519;
+  --cmap-locked-border: #e11d48;
+  --cmap-locked-text: #ffe4e6;
+  --cmap-completed-bg: #042f2e;
+  --cmap-completed-border: #0d9488;
+  --cmap-completed-text: #ccfbf1;
+  --cmap-default-bg: #3b0764;
+  --cmap-default-border: #9333ea;
+  --cmap-default-text: #f3e8ff;
+  --cmap-hover-ring: #4f46e5;
+  --cmap-active-line: #4338ca;
+  /* ────────────────────────────────────────── */
+
+  /* ── Generation Page — dark mode colors ───────────── */
+  /* Card container */
+  --gen-card: oklch(22% 0.03 268);              /* dark card bg */
+  --gen-card-border: oklch(34% 0.04 265);       /* subtle border */
+  /* Text */
+  --gen-title: oklch(95% 0.01 270);             /* near-white title */
+  --gen-subtitle: oklch(68% 0.02 270);          /* muted light text */
+  /* Accent gradient (top bar + button) */
+  --gen-accent: oklch(60% 0.20 290);            /* brighter purple for dark bg */
+  --gen-accent-mid: oklch(64% 0.18 270);        /* blue-purple mid */
+  --gen-accent-end: oklch(68% 0.16 255);        /* blue end */
+  /* Icon background */
+  --gen-icon-bg: oklch(28% 0.06 290);           /* dark purple tint */
+  /* Success state */
+  --gen-success: oklch(72% 0.12 155);           /* bright green */
+  --gen-success-bg: oklch(26% 0.06 155);        /* dark green bg */
+  /* Error state */
+  --gen-error: oklch(72% 0.16 27);              /* bright red-orange */
+  --gen-error-bg: oklch(28% 0.05 27);           /* dark red bg */
+  /* Muted button (run again / dismiss) */
+  --gen-muted: oklch(26% 0.02 270);             /* dark gray bg */
+  --gen-muted-text: oklch(85% 0.02 270);        /* light gray text */
+  /* ──────────────────────────────────────────────────── */
+}
+
+/* ═══ Route → page canvas (inherits .dark / :root --pg-* tokens) ═══════════════ */
+[data-adex-page] {
+  --page-shell-bg: var(--pg-default-shell);
+  --page-canvas-bg: var(--pg-default-canvas);
+}
+[data-adex-page="home"] {
+  --page-shell-bg: var(--pg-home-shell);
+  --page-canvas-bg: var(--pg-home-canvas);
+}
+[data-adex-page="dashboard"] {
+  --page-shell-bg: var(--pg-dashboard-shell);
+  --page-canvas-bg: var(--pg-dashboard-canvas);
+}
+[data-adex-page="schedule"] {
+  --page-shell-bg: var(--pg-schedule-shell);
+  --page-canvas-bg: var(--pg-schedule-canvas);
+}
+[data-adex-page="timetable"] {
+  --page-shell-bg: var(--pg-timetable-shell);
+  --page-canvas-bg: var(--pg-timetable-canvas);
+}
+[data-adex-page="students"] {
+  --page-shell-bg: var(--pg-students-shell);
+  --page-canvas-bg: var(--pg-students-canvas);
+}
+[data-adex-page="courses"] {
+  --page-shell-bg: var(--pg-courses-shell);
+  --page-canvas-bg: var(--pg-courses-canvas);
+}
+[data-adex-page="rooms"] {
+  --page-shell-bg: var(--pg-rooms-shell);
+  --page-canvas-bg: var(--pg-rooms-canvas);
+}
+[data-adex-page="staff"] {
+  --page-shell-bg: var(--pg-staff-shell);
+  --page-canvas-bg: var(--pg-staff-canvas);
+}
+[data-adex-page="student-registration"] {
+  --page-shell-bg: var(--pg-student-registration-shell);
+  --page-canvas-bg: var(--pg-student-registration-canvas);
+}
+[data-adex-page="advisor"] {
+  --page-shell-bg: var(--pg-advisor-shell);
+  --page-canvas-bg: var(--pg-advisor-canvas);
+}
+[data-adex-page="settings"] {
+  --page-shell-bg: var(--pg-settings-shell);
+  --page-canvas-bg: var(--pg-settings-canvas);
+}
+[data-adex-page="import"] {
+  --page-shell-bg: var(--pg-import-shell);
+  --page-canvas-bg: var(--pg-import-canvas);
+}
+[data-adex-page="user-management"] {
+  --page-shell-bg: var(--pg-user-management-shell);
+  --page-canvas-bg: var(--pg-user-management-canvas);
+}
+[data-adex-page="academic-registration"] {
+  --page-shell-bg: var(--pg-academic-registration-shell);
+  --page-canvas-bg: var(--pg-academic-registration-canvas);
+}
+
+@layer base {
+  /* ~14.5px from 16px — denser UI (rem-based Tailwind scales with this) */
+  html {
+    font-size: 90.625%;
+  }
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+
+  /* input:focus,
+  textarea:focus,
+  select:focus,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    @apply outline-none! ring-2! ring-focus-ring! border-focus-ring!;
+  } */
+}
+
+
+@layer utilities {
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+}
