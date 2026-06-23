@@ -18,7 +18,7 @@ export function registerAuthFailureHandler(handler) {
 
 // ── Axios instance — cookies are sent automatically ─────────────────────────
 const api = axios.create({
-    baseURL: "https://nub-adex.runasp.net/api",
+    baseURL: "/api",
     withCredentials: true, // Required: sends HTTP-Only cookies with every request
     headers: {
         "Content-Type": "application/json",
