@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://nub-adex.runasp.net/api/$1"
+    }
+  ]
+}
