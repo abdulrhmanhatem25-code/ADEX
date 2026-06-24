@@ -17,8 +17,10 @@ export function registerAuthFailureHandler(handler) {
 }
 
 // ── Axios instance — cookies are sent automatically ─────────────────────────
+const API_URL = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BASE_URL;
+
 const api = axios.create({
-    baseURL: "/api",
+    baseURL: API_URL ? `${API_URL}/api` : "/api",
     withCredentials: true, // Required: sends HTTP-Only cookies with every request
     headers: {
         "Content-Type": "application/json",
